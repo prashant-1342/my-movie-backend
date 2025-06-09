@@ -17,7 +17,7 @@ const axiosInstance = axios.create({
   },
 });
 
-// Route: GET /api/movies?type=now_playing OR ?genre=28 OR ?query=batman
+
 app.get('/api/movies', async (req, res) => {
   const { type = 'popular', genre, query, page = 1 } = req.query;
   const validTypes = ['popular', 'now_playing', 'top_rated', 'upcoming'];
@@ -51,7 +51,6 @@ app.get('/api/movies', async (req, res) => {
   }
 });
 
-// Route: GET /api/movie/:id for movie details
 app.get('/api/movie/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -72,7 +71,6 @@ app.get('/api/movie/:id', async (req, res) => {
   }
 });
 
-// Route: GET /api/movie/:id/credits for movie cast
 app.get('/api/movie/:id/credits', async (req, res) => {
   const { id } = req.params;
 
@@ -93,7 +91,6 @@ app.get('/api/movie/:id/credits', async (req, res) => {
   }
 });
 
-// Route: GET /api/movie/:id/similar for similar movies
 app.get('/api/movie/:id/similar', async (req, res) => {
   const { id } = req.params;
 
@@ -114,7 +111,6 @@ app.get('/api/movie/:id/similar', async (req, res) => {
   }
 });
 
-// Route: GET /api/movie/:id/videos for movie trailers/videos
 app.get('/api/movie/:id/videos', async (req, res) => {
   const { id } = req.params;
 
@@ -136,7 +132,6 @@ app.get('/api/movie/:id/videos', async (req, res) => {
 });
 
 
-// ✅ NEW: GET /api/movies/byIds?ids=27205,667216,...
 app.get('/api/movies/byIds', async (req, res) => {
   const ids = req.query.ids?.split(',') || [];
 
@@ -165,7 +160,6 @@ app.get('/api/movies/byIds', async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`✅ Backend running at http://localhost:${PORT}`);
